@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float ySpeed = 5f;
     private float yVector = 0f;
     private Rigidbody2D rb;
+    int coins;
     void Start()
     {
         // Get the Rigidbody2D component
@@ -34,10 +35,12 @@ public class PlayerController : MonoBehaviour
        yVector = ySpeed * verticalInput * Time.deltaTime;
        transform.Translate(xVector, yVector, 0);
     }
-    int coin
-    OnTrigger2D(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(other tagged "coin")
-            {
-            print("I have" + coin + "coins");
+
+        if (other.CompareTag("Coins"))
+        {
+            coins += coins;
+        }
+    }
 }
