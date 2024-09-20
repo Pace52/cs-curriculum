@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Singleton : MonoBehaviour
 {
-    int coins;
+    public int coins = 0;
     public static Singleton St;
 
     void Awake()
@@ -20,4 +19,5 @@ public class Singleton : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
 }

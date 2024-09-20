@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,11 +15,12 @@ public class PlayerController : MonoBehaviour
     public float ySpeed = 5f;
     private float yVector = 0f;
     private Rigidbody2D rb;
-    int coins;
+    public Singleton St;
     void Start()
     {
         // Get the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
+        St = FindObjectOfType<Singleton>();
     }
     void Update()
     {
@@ -35,12 +37,13 @@ public class PlayerController : MonoBehaviour
        yVector = ySpeed * verticalInput * Time.deltaTime;
        transform.Translate(xVector, yVector, 0);
     }
-    void OnTriggerEnter2D(Collider2D other)
+    
+    void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (other.CompareTag("Coins"))
+        if (collision.CompareTag("Coin"))
         {
-            coins += coins;
+            St.coins += 1;
+            print("I have" + St.coins + "coins");
         }
     }
 }
