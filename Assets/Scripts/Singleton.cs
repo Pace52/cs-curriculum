@@ -5,7 +5,10 @@ using UnityEngine;
 public class Singleton : MonoBehaviour
 {
     public int coins = 0;
+    private int health = 10;
     public static Singleton St;
+    public TextMeshProUGUI cointext;
+    public TextMeshProUGUI healthtext;
 
     void Awake()
     {
@@ -20,4 +23,8 @@ public class Singleton : MonoBehaviour
         }
     }
 
+    public void ChangeHealth(int cht)
+    {
+        health += cht;
+    }
 }

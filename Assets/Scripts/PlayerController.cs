@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         // Get the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
         St = FindObjectOfType<Singleton>();
+        Debug.Log(St);
     }
     void Update()
     {
@@ -40,10 +41,11 @@ public class PlayerController : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Coin"))
+        if (collision.gameObject.CompareTag("Coin"))
         {
-            St.coins += 1;
+            St.coins = St.coins + 1;
             print("I have" + St.coins + "coins");
+            Destroy(collision.gameObject);
         }
     }
 }
