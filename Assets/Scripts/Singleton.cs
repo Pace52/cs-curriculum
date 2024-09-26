@@ -1,14 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Singleton : MonoBehaviour
 {
-    public int coins = 0;
-    private int health = 10;
     public static Singleton St;
+    
+    public int coins = 0;
+    public int health = 10;
     public TextMeshProUGUI cointext;
     public TextMeshProUGUI healthtext;
+    public string coinstring;
+    public string healthstring;
+
+    public void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        cointext.text = coinstring;
+        coinstring = "Coins: " + coins;
+        healthtext.text = healthstring;
+        healthstring = "Health: " + health;
+    }
 
     void Awake()
     {
@@ -25,6 +43,12 @@ public class Singleton : MonoBehaviour
 
     public void ChangeHealth(int cht)
     {
+        Debug.Log("de the bug");
         health += cht;
+        print(health);
+        if (health == 0)
+        {
+            print("You died");
+        }
     }
 }

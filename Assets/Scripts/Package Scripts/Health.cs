@@ -1,20 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Health : MonoBehaviour
 {
-    public Singleton singleton;
+    public Singleton St;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        singleton = FindObjectOfType<Singleton>();
-    }
-    
-    private void OnCollisionEnter2D()
-    // Update is called once per frame
-    void Update()
-    {
-        
+        St = FindObjectOfType<Singleton>();
     }
 }

@@ -47,5 +47,12 @@ public class PlayerController : MonoBehaviour
             print("I have" + St.coins + "coins");
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            St.health = St.health - 1;
+            if (St.health == 0);
+
+        }
     }
 }
