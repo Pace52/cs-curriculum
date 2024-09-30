@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Singleton : MonoBehaviour
 {
     public static Singleton St;
-    
+
+    public int maxhealth = 10;
     public int coins = 0;
     public int health = 10;
     public TextMeshProUGUI cointext;
@@ -49,6 +51,16 @@ public class Singleton : MonoBehaviour
         if (health == 0)
         {
             print("You died");
+        }
+        if (health > maxhealth)
+        {
+            health = maxhealth;
+        }
+        if (health < 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            health = 10;
+            coins = 0;
         }
     }
 }

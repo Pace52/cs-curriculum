@@ -11,4 +11,12 @@ public class Health : MonoBehaviour
     {
         St = FindObjectOfType<Singleton>();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            St.ChangeHealth(-1);
+        }
+    }
 }
