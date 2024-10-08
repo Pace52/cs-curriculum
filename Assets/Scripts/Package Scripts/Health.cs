@@ -18,5 +18,10 @@ public class Health : MonoBehaviour
         {
             St.ChangeHealth(-1);
         }
+
+        if (other.gameObject.CompareTag("Fireball"))
+        {
+            St.ChangeHealth(cht:-1);
+        }
     }
 }

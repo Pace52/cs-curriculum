@@ -2,35 +2,49 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor.Connect;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
     private float coolDown;
-    private float firerate = 10;
+    private float firerate = 1;
     public GameObject bullet;
+    private GameObject player;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        GetComponent<Rigidbody2D>().gravityScale = 0f;
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        coolDown -= Time.deltaTime;
+        if (player && coolDown < 0)
+        {
+            Shoot();
+        }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && coolDown <= 0)
+        if (other.gameObject.CompareTag("Player"))
         {
-            GameObject instance = Instantiate(bullet, transform.position, quaternion.identity);
-            instance.GetComponent<Bullet>().targetPos = other.transform.position;
-            coolDown = firerate;
-            firerate = Time.deltaTime;
+            player = null;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player = other.gameObject;
+        }
+    }
+    void Shoot()
+    {
+        GameObject bulletInstance = Instantiate(bullet, transform.position, quaternion.identity);
+        bulletInstance.GetComponent<Bullet>().targetPos = player.transform.position;
+        coolDown = firerate;
     }
 }
