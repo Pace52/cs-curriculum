@@ -23,5 +23,10 @@ public class Health : MonoBehaviour
         {
             St.ChangeHealth(cht:-1);
         }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            St.ChangeHealth(cht:-2);
+        }
     }
 }

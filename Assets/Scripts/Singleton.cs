@@ -45,7 +45,6 @@ public class Singleton : MonoBehaviour
 
     public void ChangeHealth(int cht)
     {
-        Debug.Log("de the bug");
         health += cht;
         print(health);
         if (health == 0)
