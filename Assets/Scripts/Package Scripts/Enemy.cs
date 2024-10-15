@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,7 +15,8 @@ public class EnemyAI : MonoBehaviour
     {
         Wander,
         Chase,
-        Attack
+        Attack,
+        Die
     }
     // Start is called before the first frame update
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("Chasing");
             transform.position = Vector3.MoveTowards(current: transform.position, target: player.transform.position,
                 maxDistanceDelta: 1f * Time.deltaTime);
-            if (Vector3.Distance(a: transform.position, b: points[pointer].transform.position) < 1f)
+            if (Vector3.Distance(a: transform.position, b: points[pointer].transform.position) < 0.7f)
             {
                 state = States.Attack;
             }
