@@ -10,7 +10,8 @@ public class EnemyAI : MonoBehaviour
     public int pointer = 0;
     public GameObject player;
     public States state = States.Wander;
-
+    public Singleton St;
+    
     public enum States
     {
         Wander,
@@ -20,9 +21,9 @@ public class EnemyAI : MonoBehaviour
     }
     // Start is called before the first frame update
     // Update is called once per frame
-    void Start()
+    private void Start()
     {
-        
+        St = FindObjectofType<Singleton>();
     }
     void Update()
     {
@@ -43,7 +44,7 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("Chasing");
             transform.position = Vector3.MoveTowards(current: transform.position, target: player.transform.position,
                 maxDistanceDelta: 1f * Time.deltaTime);
-            if (Vector3.Distance(a: transform.position, b: points[pointer].transform.position) < 0.7f)
+            if (Vector3.Distance(a: transform.position, b: player.transform.position) < 1f)
             {
                 state = States.Attack;
             }
