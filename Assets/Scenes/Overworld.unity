@@ -40574,6 +40574,10 @@ MonoBehaviour:
   pointer: 0
   player: {fileID: 0}
   state: 0
+  St: {fileID: 0}
+  mtpv: {x: 0, y: 0, z: 0}
+  direction: 
+  mobileEnemy: {fileID: 1976603212}
 --- !u!1001 &901789533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85806,6 +85810,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!95 &1976603212 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2864171262592659787, guid: fbdc99957549444bfba281e61d9d218c,
+    type: 3}
+  m_PrefabInstance: {fileID: 637285949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2020212485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281311786053241907, guid: 69c7343f050914c7787bbbe42c07b5b8,
